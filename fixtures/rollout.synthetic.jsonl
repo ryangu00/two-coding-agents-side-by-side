@@ -1,0 +1,8 @@
+{"type": "session_meta", "payload": {"id": "s1", "cwd": "work", "originator": "agent_b_exec", "cli_version": "0.153.4"}}
+{"type": "response_item", "payload": {"type": "custom_tool_call", "name": "exec", "input": "text('record-check: OK slug=x')"}}
+{"type": "event_msg", "payload": {"type": "item_completed", "item": {"type": "CommandExecution", "id": "c1", "command": ["/bin/zsh", "-lc", "git add a.txt && git commit -m x"], "aggregated_output": "ok", "exit_code": 0}}}
+{"type": "event_msg", "payload": {"type": "item_completed", "item": {"type": "CommandExecution", "id": "c2", "command": ["false"], "aggregated_output": "", "exit_code": 1}}}
+{"type": "event_msg", "payload": {"type": "item_completed", "item": {"type": "FileChange", "id": "f1", "changes": {"work/new.py": {"type": "add", "content": "print(1)\n"}, "work/old.py": {"type": "update", "unified_diff": "--- a\n+++ b\n@@\n-x\n+y\n"}}}}}
+{"type": "event_msg", "payload": {"type": "item_completed", "item": {"type": "McpToolCall", "id": "m1", "server": "example", "tool": "put_page", "arguments": {"slug": "a"}}}}
+{"type": "event_msg", "payload": {"type": "item_completed", "item": {"type": "WebSearch", "id": "w1", "query": "q"}}}
+{"type": "event_msg", "payload": {"type": "item_completed", "item": {"type": "AgentMessage", "id": "a1", "content": []}}}

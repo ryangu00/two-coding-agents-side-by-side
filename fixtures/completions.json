@@ -1,0 +1,32 @@
+{
+  "example-model": [
+    {
+      "model": "example-model",
+      "choices": [
+        {
+          "message": {
+            "content": ""
+          },
+          "finish_reason": "length"
+        }
+      ],
+      "usage": {
+        "total_tokens": 38366
+      }
+    },
+    {
+      "model": "example-model",
+      "choices": [
+        {
+          "message": {
+            "content": "FIX-FIRST\nSynthetic retry output."
+          },
+          "finish_reason": "stop"
+        }
+      ],
+      "usage": {
+        "total_tokens": 20000
+      }
+    }
+  ]
+}

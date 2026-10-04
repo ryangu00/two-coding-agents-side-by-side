@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Proposed review-round ledger",
+  "type": "object",
+  "properties": {
+    "round": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "subject_sha_before": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      }
+    },
+    "subject_sha_after": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      }
+    },
+    "reviewer": {
+      "type": "object",
+      "properties": {
+        "family": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "effort": {
+          "type": "string"
+        },
+        "sandbox": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "family",
+        "model",
+        "effort",
+        "sandbox"
+      ],
+      "additionalProperties": false
+    },
+    "prior": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "finding": {
+            "type": "string"
+          },
+          "state": {
+            "enum": [
+              "fixed",
+              "partial",
+              "open"
+            ]
+          },
+          "evidence": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "finding",
+          "state",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "new_confirmed": {
+      "type": "object",
+      "required": [
+        "BLOCKER",
+        "MAJOR",
+        "MINOR"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "BLOCKER": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "MAJOR": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "MINOR": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "new_unconfirmed": {
+      "type": "object",
+      "required": [
+        "BLOCKER",
+        "MAJOR",
+        "MINOR"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "BLOCKER": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "MAJOR": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "MINOR": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "tests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "suite": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "completed",
+              "collected-only",
+              "not-run"
+            ]
+          },
+          "passed": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "failed": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "suite",
+          "status",
+          "passed",
+          "failed"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "regressions_from_fix": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reachability": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "finding": {
+            "type": "string"
+          },
+          "class": {
+            "enum": [
+              "ordinary-use",
+              "special-means",
+              "unknown"
+            ]
+          },
+          "evidence": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "finding",
+          "class",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "stop_decision": {
+      "enum": [
+        "continue",
+        "stop-and-fix",
+        "stop-and-rescope",
+        "stop-with-accepted-risk"
+      ]
+    }
+  },
+  "required": [
+    "round",
+    "subject_sha_before",
+    "subject_sha_after",
+    "reviewer",
+    "prior",
+    "new_confirmed",
+    "new_unconfirmed",
+    "tests",
+    "regressions_from_fix",
+    "reachability",
+    "stop_decision"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,6 @@
+diff --git a/example.py b/example.py
+--- a/example.py
++++ b/example.py
+@@ -1 +1 @@
+-answer = None
++answer = "ready"
